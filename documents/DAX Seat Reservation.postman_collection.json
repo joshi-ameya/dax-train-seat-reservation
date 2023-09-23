@@ -1,0 +1,732 @@
+{
+	"info": {
+		"_postman_id": "f37912d9-552b-4180-85ac-ab6c7d5f39f6",
+		"name": "DAX Seat Reservation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12008659"
+	},
+	"item": [
+		{
+			"name": "Reserve Seats",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"train\": \"12228\",\n    \"cabin\": \"first_class\",\n    \"no_of_seats\": 1,\n    \"date\": \"2023-09-23\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/1.0.0/reservation/reserve/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"1.0.0",
+						"reservation",
+						"reserve",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Invalid day of week is selected",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"train\": \"12228\",\n    \"cabin\": \"first_class\",\n    \"no_of_seats\": 1,\n    \"date\": \"2023-09-23\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/1.0.0/reservation/reserve/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"1.0.0",
+								"reservation",
+								"reserve",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 23 Sep 2023 18:03:41 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "50"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"date\": [\n        \"Train is not available on sat of week\"\n    ]\n}"
+				},
+				{
+					"name": "Successful - Reservation Done",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"train\": \"12228\",\n    \"cabin\": \"first_class\",\n    \"no_of_seats\": 1,\n    \"date\": \"2023-09-22\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/1.0.0/reservation/reserve/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"1.0.0",
+								"reservation",
+								"reserve",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 23 Sep 2023 18:04:49 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "59"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"successful.\",\n    \"reservation_number\": \"1BAHZMMX3Q\"\n}"
+				},
+				{
+					"name": "No seats in requested-suggestions are sent",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"train\": \"12228\",\n    \"cabin\": \"first_class\",\n    \"no_of_seats\": 20,\n    \"date\": \"2023-09-22\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/1.0.0/reservation/reserve/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"1.0.0",
+								"reservation",
+								"reserve",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 23 Sep 2023 18:05:43 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "241"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"suggestions\": [\n        {\n            \"cabin_type\": \"general\",\n            \"available_seats\": \"20\"\n        },\n        {\n            \"cabin_type\": \"second_class\",\n            \"available_seats\": \"20\"\n        }\n    ],\n    \"message\": [\n        \"There are not enough seats in mentioned cabins, you can select anyone of the available cabins, if interested\"\n    ]\n}"
+				},
+				{
+					"name": "No seats are available",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"train\": \"12228\",\n    \"cabin\": \"general\",\n    \"no_of_seats\": 222,\n    \"date\": \"2023-09-22\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/1.0.0/reservation/reserve/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"1.0.0",
+								"reservation",
+								"reserve",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 23 Sep 2023 18:09:21 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "66"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": [\n        \"Sorry, train does not have enough seats available.\"\n    ]\n}"
+				},
+				{
+					"name": "No train found",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"train\": \"testing train no.\",\n    \"cabin\": \"general\",\n    \"no_of_seats\": 5,\n    \"date\": \"2023-09-22\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/1.0.0/reservation/reserve/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"1.0.0",
+								"reservation",
+								"reserve",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 23 Sep 2023 18:10:06 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "28"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"train\": [\n        \"No train found\"\n    ]\n}"
+				},
+				{
+					"name": "Invalid Cabin",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"train\": \"12228\",\n    \"cabin\": \"sadnsadbs\",\n    \"no_of_seats\": 5,\n    \"date\": \"2023-09-22\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/1.0.0/reservation/reserve/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"1.0.0",
+								"reservation",
+								"reserve",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 23 Sep 2023 18:10:34 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "50"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"cabin\": [\n        \"\\\"sadnsadbs\\\" is not a valid choice.\"\n    ]\n}"
+				},
+				{
+					"name": "Cabin not attached to Train",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"train\": \"12228\",\n    \"cabin\": \"second_class\",\n    \"no_of_seats\": 5,\n    \"date\": \"2023-09-22\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/1.0.0/reservation/reserve/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"1.0.0",
+								"reservation",
+								"reserve",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 23 Sep 2023 18:11:57 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "56"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"cabin\": [\n        \"This cabin is not available to this train.\"\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Reservation Details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/1.0.0/reservation/details/AZFU9AN30O/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"1.0.0",
+						"reservation",
+						"details",
+						"AZFU9AN30O",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "No reservation found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/1.0.0/reservation/details/AZFU9AN30O/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"1.0.0",
+								"reservation",
+								"details",
+								"AZFU9AN30O",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 23 Sep 2023 18:13:10 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "35"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"No reservation found.\"\n}"
+				},
+				{
+					"name": "Success - Details found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/1.0.0/reservation/details/VXMJBJGNSQ/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"1.0.0",
+								"reservation",
+								"details",
+								"VXMJBJGNSQ",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 23 Sep 2023 18:14:00 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "319"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"train\": {\n        \"train_no\": \"12228\",\n        \"destination\": \"Indore\",\n        \"source\": \"Mumbai\",\n        \"start_time\": \"18:00:15\",\n        \"end_time\": \"18:00:17\"\n    },\n    \"cabin\": {\n        \"type\": \"general\",\n        \"name\": \"G1\",\n        \"description\": \"sak;dnsljdas\"\n    },\n    \"reservation_number\": \"VXMJBJGNSQ\",\n    \"no_of_seats\": 222,\n    \"date_of_travel\": \"2023-09-22\",\n    \"date_of_reservation\": \"2023-09-23T18:09:18.499673Z\"\n}"
+				}
+			]
+		}
+	]
+}
