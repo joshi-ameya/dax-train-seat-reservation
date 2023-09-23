@@ -38,6 +38,7 @@ node_modules/
 
 # Local development settings
 local_settings.py
+local.py
 
 # Secret key configuration
 secret_key.txt
