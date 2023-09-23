@@ -1,0 +1,49 @@
+# Byte-compiled files
+*.pyc
+
+# Caches and Logs
+__pycache__/
+*.log
+*.swp
+
+# Environment-specific settings
+.env
+
+# Static files (automatically collected by "collectstatic" management command)
+static/
+
+# Media files (user-uploaded content)
+media/
+
+# Database (SQLite, PostgreSQL, MySQL, etc.)
+*.sqlite3
+*.db
+*.bak
+
+# IDE-specific files and directories
+.vscode/
+.idea/
+
+# Dependency directories
+__pycache__/
+env/
+venv/
+node_modules/
+
+# Compiled Python files
+*.pyc
+
+# Compiled translations
+*.mo
+
+# Local development settings
+local_settings.py
+
+# Secret key configuration
+secret_key.txt
+
+# macOS specific files to ignore
+.DS_Store
+
+# Windows thumbnail files
+Thumbs.db
